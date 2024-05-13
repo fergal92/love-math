@@ -46,6 +46,8 @@ function runGame(gameType){
         displayMultiplyQuestion(num1, num2);
     }else if(gameType === 'subtract'){
         displaySubtractQuestion(num1, num2);
+    } else if(gameType === 'divide'){
+        displayDivisionQuestion(num1, num2);
     } else {
         alert(`unknown game type: ${gameType}`);
         // throw statement to stop game from running
@@ -91,6 +93,8 @@ function calculateCorrectAnswer(){
         return [operand1 * operand2, 'multiply'];
     }else if(operator ==='-'){
         return [operand1 - operand2, 'subtract'];
+    } else if(operator === '/'){
+        return [operand1 / operand2, 'divide'];
     } else{
         alert(`unimplemented operator ${operator}`);
         throw `unimplemented operator ${operator}. Aborting`
@@ -133,4 +137,11 @@ function displayMultiplyQuestion(operand1, operand2){
     document.getElementById('operand1').textContent = operand1;
     document.getElementById('operand2').textContent = operand2;
     document.getElementById('operator').textContent = 'x';
+}
+
+function displayDivisionQuestion(operand1, operand2){
+    // Ternary operator instead of if statements
+    document.getElementById("operand1").textContent = operand1 > operand2 ? operand1 : operand2;
+    document.getElementById("operand2").textContent = operand1 > operand2 ? operand1 : operand2;
+    document.getElementById('operator').textContent = '/';
 }
